@@ -1,6 +1,7 @@
 package ru.aston.hometask.sort;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Objects;
 
 import ru.aston.hometask.db.Bus;
@@ -11,73 +12,52 @@ public class SortHandler implements CommandHandler {
 
     private Sorter sorter = new Sorter();
     private BusRepository repository;
-
-    public static class BusComparators {
-
-        private BusComparators() {}
-        public static final Comparator<Bus> BY_MODEL = Comparator.comparing(Bus::getModel);
-        public static final Comparator<Bus> BY_NUMBER = Comparator.comparing(Bus::getNumber);
-        public static final Comparator<Bus> BY_MILEAGE = Comparator.comparing(Bus::getMileage);
-    }
+    private HashMap<String, Comparator<Bus>> busComparators;
 
     public SortHandler(BusRepository newRepository) {
         this.repository = newRepository;
+
+        busComparators = new HashMap<>();
+        busComparators.put("number", Comparator.comparing(Bus::getNumber));
+        busComparators.put("model", Comparator.comparing(Bus::getModel));
+        busComparators.put("mileage", Comparator.comparing(Bus::getMileage));
     }
 
     @Override
     public void executeCommand(String[] args) {
         if (args.length < 1) {
-            System.out.println("Ошибка. Не передано поле по которому необходимо произвести сортировку.");
+            System.out.println(
+                    "Ошибка. Не передано поле по которому необходимо произвести сортировку.");
             return;
         }
 
         if (args.length == 1) {
-            switch (args[0]) {
-                case "number":
-                    repository.setBuses(sorter.sort(
+            if (Objects.equals(args[0], "number") ||
+                Objects.equals(args[0], "model") ||
+                Objects.equals(args[0], "mileage")
+            ) {
+                repository.setBuses(sorter.sort(
                         repository.getBuses(),
                         false,
-                        BusComparators.BY_NUMBER,
+                        busComparators.get(args[0]),
                         null
-                    ));
-                    break;
-                case "model":
-                    repository.setBuses(sorter.sort(
-                            repository.getBuses(),
-                            false,
-                            BusComparators.BY_MODEL,
-                            null
-                    ));
-                    break;
-                case "mileage":
-                    repository.setBuses(sorter.sort(
-                            repository.getBuses(),
-                            false,
-                            BusComparators.BY_MILEAGE,
-                            null
-                    ));
-                    break;
-                default:
-                    System.out.println("Ошибка. Поле " + args[0] + " не найдено.");
+                ));
+                System.out.println("Массив автобусов отсортирован по полю " + args[0]);
+            } else {
+                System.out.println("Ошибка. Поле " + args[0] + " не найдено.");
             }
         } else if (args.length == 2 && Objects.equals(args[1], "even")) {
-            switch (args[0]) {
-                case "number":
-                    System.out.println("Ошибка. Поле number не может быть отсортировано в четном режиме.");
-                    break;
-                case "model":
-                    System.out.println("Ошибка. Поле model не может быть отсортировано в четном режиме.");
-                    break;
-                case "mileage":
-                    repository.setBuses(sorter.sort(
-                            repository.getBuses(),
-                            true,
-                            BusComparators.BY_MILEAGE,
-                            bus -> bus.getMileage() % 2 == 0
-                    ));
-                    break;
-                default:
-                    System.out.println("Ошибка. Поле " + args[0] + " не найдено.");
+            if (Objects.equals(args[0], "mileage")) {
+                repository.setBuses(sorter.sort(
+                        repository.getBuses(),
+                        true,
+                        busComparators.get(args[0]),
+                        bus -> bus.getMileage() % 2 == 0
+                ));
+                System.out.println("Элементы с четным значением поля mileage отсортированы.");
+            } else {
+                System.out.println(
+                        "Ошибка. Поле " + args[0] + " не может быть отсортировано в четном режиме.");
             }
         } else {
             System.out.println("Ошибка. Слишком много аргументов для команды sort.");

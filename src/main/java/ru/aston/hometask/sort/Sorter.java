@@ -62,19 +62,15 @@ public class Sorter {
         for (int i = 0; i < indexes.size(); i++) {
             arr.set(indexes.get(i), evens.get(i));
         }
-
-        for (int i = 0; i < arr.size(); i++) {
-            System.out.println(arr.get(i));
-        }
     }
 
-    public CustomArray<Bus> sort(
-            CustomArray<Bus> buses,
-            Boolean evenSortMode,
-            Comparator<? super Bus> comparator,
-            Predicate<? super Bus> predicate
+    public <T> CustomArray<T> sort(
+            CustomArray<T> buses,
+            boolean evenSortMode,
+            Comparator<? super T> comparator,
+            Predicate<? super T> predicate
     ) {
-        CustomArray<Bus> copy = buses.copy();
+        CustomArray<T> copy = buses.copy();
 
         if (!evenSortMode) {
             quickSort(copy, 0, copy.size() - 1, comparator);
