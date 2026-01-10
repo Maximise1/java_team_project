@@ -25,13 +25,13 @@ public class Container {
         this.commandParser = new CommandParser();
 
         this.handlers = new HashMap<>();
+        handlers.put(CommandType.FILL, new InputHandler(
+                repository
+        ));
         handlers.put(CommandType.COUNT, new CounterHandler(
                 repository
         ));
         handlers.put(CommandType.SORT, new SortHandler(
-                repository
-        ));
-        handlers.put(CommandType.FILL, new InputHandler(
                 repository
         ));
         handlers.put(CommandType.HELP, new HelpHandler());
