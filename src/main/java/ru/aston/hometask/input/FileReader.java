@@ -6,7 +6,7 @@ import ru.aston.hometask.util.CustomArray;
 public class FileReader implements Reader { // TODO: реализовать чтение из файла
 
     @Override
-    public CustomArray<Bus> parse(String input) {
+    public CustomArray<Bus> read(int size, String params) {
         return null;
     }
 }
