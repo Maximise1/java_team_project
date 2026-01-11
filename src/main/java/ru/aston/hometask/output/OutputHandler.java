@@ -3,7 +3,7 @@ package ru.aston.hometask.output;
 import ru.aston.hometask.db.BusRepository;
 import ru.aston.hometask.di.CommandHandler;
 
-public class OutputHandler implements CommandHandler { // TODO: Реализовать вывод списка автобусов в консоль и в файл
+public class OutputHandler implements CommandHandler {
 
     private BusRepository repository;
 
@@ -13,6 +13,7 @@ public class OutputHandler implements CommandHandler { // TODO: Реализов
 
     @Override
     public void executeCommand(String[] args) {
-
+        new ConsolePrinter().print(repository.getBuses());
+        new FileWriter().write(repository.getBuses(),"BusesTable.txt");
     }
 }
