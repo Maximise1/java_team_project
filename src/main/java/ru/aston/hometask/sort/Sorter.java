@@ -23,7 +23,7 @@ public class Sorter {
         return i + 1;
     }
 
-    public <T> void quickSort(
+    private <T> void quickSort(
             CustomArray<T> list,
             int low,
             int high,
@@ -42,7 +42,7 @@ public class Sorter {
         list.set(j, temp);
     }
 
-    public <T> void quickSortEven(
+    private <T> void quickSortEven(
             CustomArray<T> arr,
             Predicate<? super T> isEven,
             Comparator<? super T> cmp

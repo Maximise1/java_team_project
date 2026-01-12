@@ -20,7 +20,7 @@ class CommandParserTest {
     }
 
     @Test
-    void when_correctValuesPassed_then_correctCommandsReturned() { // TODO: добавить тесты команды count
+    void when_correctValuesPassed_then_correctCommandsReturned() {
         Command sortCommand1 = parser.parseCommand("sort number even");
         Command sortCommand2 = parser.parseCommand("sort mileage");
 
@@ -63,7 +63,7 @@ class CommandParserTest {
     }
 
     @Test
-    void when_incorrectValuesPassed_then_nullReturned() { // TODO: добавить тесты команды count
+    void when_incorrectValuesPassed_then_nullReturned() {
         Command sortCommand1 = parser.parseCommand("sort inexistent_field");
         Command sortCommand2 = parser.parseCommand("sort mileage wrong_mode");
 
