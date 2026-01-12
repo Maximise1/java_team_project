@@ -38,12 +38,29 @@ public class CommandParser {
             case PRINT -> parsePrint(command, splitCommand);
             case SORT -> parseSort(splitCommand);
             case FILL -> parseFill(command, splitCommand);
-            case COUNT -> {
-                // TODO: Узнать как выглядит строка с автобусом
-                System.out.println("Команда count пока не реализована");
-                yield null;
-            }
+            case COUNT -> parseCount(splitCommand);
         };
+    }
+
+    private Command parseCount(String[] splitCommand) {
+        if (splitCommand.length != 4) {
+            System.out.println(
+                    "Команда count должна соответствовать формату print <number> <model> <mileage>");
+            System.out.println("Пример: count А111AA11 ford 100");
+            return null;
+        }
+
+        if (DataValidator.isValid(splitCommand[1], splitCommand[2], splitCommand[3])) {
+            return new Command(
+                    CommandType.COUNT,
+                    new String[] {splitCommand[1], splitCommand[2], splitCommand[3]}
+            );
+        } else {
+            System.out.println(
+                    "Команда count должна соответствовать формату print <number> <model> <mileage>");
+            System.out.println("Пример: count А111AA11 ford 100");
+            return null;
+        }
     }
 
     private Command parsePrint(String originalCommand, String[] splitCommand) {
