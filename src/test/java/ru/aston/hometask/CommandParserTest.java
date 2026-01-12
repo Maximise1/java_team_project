@@ -27,8 +27,8 @@ class CommandParserTest {
         Command helpCommand = parser.parseCommand("help");
 
         Command fillCommand1 = parser.parseCommand("fill file test.txt");
-        Command fillCommand2 = parser.parseCommand("fill console 10");
-        Command fillCommand3 = parser.parseCommand("fill random 20");
+        Command fillCommand2 = parser.parseCommand("fill 10 console");
+        Command fillCommand3 = parser.parseCommand("fill 20 random");
 
         Command printCommand1 = parser.parseCommand("print console");
         Command printCommand2 = parser.parseCommand("print file test.txt");
@@ -50,10 +50,10 @@ class CommandParserTest {
         assertEquals(CommandType.FILL, fillCommand3.type);
         assertEquals("file", fillCommand1.params[0]);
         assertEquals("test.txt", fillCommand1.params[1]);
-        assertEquals("console", fillCommand2.params[0]);
-        assertEquals("10", fillCommand2.params[1]);
-        assertEquals("random", fillCommand3.params[0]);
-        assertEquals("20", fillCommand3.params[1]);
+        assertEquals("console", fillCommand2.params[1]);
+        assertEquals("10", fillCommand2.params[0]);
+        assertEquals("random", fillCommand3.params[1]);
+        assertEquals("20", fillCommand3.params[0]);
         assertEquals(CommandType.COUNT, countCommand.type);
 
         assertEquals(CommandType.PRINT, printCommand1.type);

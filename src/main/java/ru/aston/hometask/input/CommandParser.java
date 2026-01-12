@@ -135,12 +135,13 @@ public class CommandParser {
         if (splitCommand.length < 3) {
             System.out.println("Неверный синтаксис команды fill.");
             System.out.println("Пример: fill file test.txt");
-            System.out.println("Пример: fill console 10");
+            System.out.println("Пример: fill 10 console");
             return null;
         }
 
-        if (!FILL_MODES.contains(splitCommand[1])) {
-            System.out.println("Ошибка. Неизвестный режим заполнения: " + splitCommand[1]);
+        if (!FILL_MODES.contains(splitCommand[1]) && !FILL_MODES.contains(splitCommand[2])) {
+            System.out.println("Ошибка. Неизвестные режимы заполнения: " + splitCommand[1]
+                    + " " + splitCommand[2]);
             return null;
         }
 
@@ -161,7 +162,7 @@ public class CommandParser {
         }
 
         try {
-            int amount = Integer.parseInt(splitCommand[2]);
+            int amount = Integer.parseInt(splitCommand[1]);
             if (amount <= 0) {
                 throw new NumberFormatException();
             }
