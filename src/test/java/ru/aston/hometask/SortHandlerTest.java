@@ -28,7 +28,7 @@ class SortHandlerTest {
     }
 
     @Test
-    void executeCommand_shouldSortByMileage() {
+    void when_executeCommandMileage_then_shouldSortByMileage() {
         handler.executeCommand(new String[]{"mileage"});
 
         assertEquals(51, repository.getBuses().get(0).getMileage());
@@ -37,7 +37,7 @@ class SortHandlerTest {
     }
 
     @Test
-    void executeCommand_shouldRejectInvalidField() {
+    void when_executeUnexistingCommand_then_shouldRejectInvalidField() {
         ByteArrayOutputStream out = ConsoleTestUtil.interceptOut();
 
         handler.executeCommand(new String[]{"color"});
@@ -46,7 +46,7 @@ class SortHandlerTest {
     }
 
     @Test
-    void executeCommand_shouldRejectEvenModeForModel() {
+    void when_executeCommandModelEven_then_shouldRejectEvenModeForModel() {
         ByteArrayOutputStream out = ConsoleTestUtil.interceptOut();
 
         handler.executeCommand(new String[]{"model", "even"});
@@ -55,7 +55,7 @@ class SortHandlerTest {
     }
 
     @Test
-    void executeCommand_shouldSortEvenMileageOnly() {
+    void when_executeCommandMileageEven_then_shouldSortEvenMileageOnly() {
         handler.executeCommand(new String[]{"mileage", "even"});
 
         assertEquals(100, repository.getBuses().get(0).getMileage());
@@ -64,7 +64,7 @@ class SortHandlerTest {
     }
 
     @Test
-    void executeCommand_shouldRejectTooManyArguments() {
+    void executeCommandWithTooManyArgs_shouldRejectTooManyArguments() {
         ByteArrayOutputStream out = ConsoleTestUtil.interceptOut();
 
         handler.executeCommand(new String[]{"mileage", "even", "extra"});
