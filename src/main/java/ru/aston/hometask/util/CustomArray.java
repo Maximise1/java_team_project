@@ -2,7 +2,7 @@ package ru.aston.hometask.util;
 
 import java.util.Arrays;
 
-public class CustomArray<T> { // TODO: Переделать, так как эта реализация сгенерирована чатом гпт
+public class CustomArray<Bus> {
 
     private Object[] data;
     private int size;
@@ -22,30 +22,24 @@ public class CustomArray<T> { // TODO: Переделать, так как эт�
         size = 0;
     }
 
-    // Add element to the end
-    public void add(T element) {
+    public void add(Bus element) {
         ensureCapacity();
         data[size++] = element;
     }
 
-    // Get element at index
-    @SuppressWarnings("unchecked")
-    public T get(int index) {
+    public Bus get(int index) {
         checkIndex(index);
-        return (T) data[index];
+        return (Bus) data[index];
     }
 
-    // Replace element at index
-    public void set(int index, T element) {
+    public void set(int index, Bus element) {
         checkIndex(index);
         data[index] = element;
     }
 
-    // Remove element at index
-    @SuppressWarnings("unchecked")
-    public T remove(int index) {
+    public Bus remove(int index) {
         checkIndex(index);
-        T removed = (T) data[index];
+        Bus removed = (Bus) data[index];
 
         int numMoved = size - index - 1;
         if (numMoved > 0) {
@@ -56,7 +50,6 @@ public class CustomArray<T> { // TODO: Переделать, так как эт�
         return removed;
     }
 
-    // Current number of elements
     public int size() {
         return size;
     }
@@ -80,8 +73,8 @@ public class CustomArray<T> { // TODO: Переделать, так как эт�
         }
     }
 
-    public CustomArray<T> copy() {
-        CustomArray<T> copy = new CustomArray<>(this.data.length);
+    public CustomArray<Bus> copy() {
+        CustomArray<Bus> copy = new CustomArray<>(this.data.length);
         copy.size = this.size;
         System.arraycopy(this.data, 0, copy.data, 0, this.size);
         return copy;
