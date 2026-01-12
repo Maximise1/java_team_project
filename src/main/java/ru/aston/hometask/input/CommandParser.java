@@ -5,6 +5,7 @@ import java.util.Set;
 
 import ru.aston.hometask.di.Command;
 import ru.aston.hometask.di.CommandType;
+import ru.aston.hometask.util.DataValidator;
 
 public class CommandParser {
 
@@ -46,7 +47,7 @@ public class CommandParser {
         if (splitCommand.length != 4) {
             System.out.println(
                     "Команда count должна соответствовать формату print <number> <model> <mileage>");
-            System.out.println("Пример: count А111AA11 ford 100");
+            System.out.println("Пример: count А123ВС77 Ford 100");
             return null;
         }
 
@@ -58,7 +59,7 @@ public class CommandParser {
         } else {
             System.out.println(
                     "Команда count должна соответствовать формату print <number> <model> <mileage>");
-            System.out.println("Пример: count А111AA11 ford 100");
+            System.out.println("Пример: count А123ВС77 Ford 100");
             return null;
         }
     }
