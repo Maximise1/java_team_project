@@ -5,5 +5,5 @@ import ru.aston.hometask.util.CustomArray;
 
 public interface Reader {
 
-    public CustomArray<Bus> parse(String input);
+    CustomArray<Bus> read(int size, String params);
 }
