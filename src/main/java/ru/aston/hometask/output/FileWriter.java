@@ -6,7 +6,7 @@ import ru.aston.hometask.util.CustomArray;
 import java.io.IOException;
 
 public class FileWriter {
-    public void write(
+    public static void write(
             CustomArray<Bus> buses,
             String path
     ) {

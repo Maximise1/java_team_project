@@ -5,7 +5,7 @@ import ru.aston.hometask.util.CustomArray;
 
 public class ConsolePrinter {
 
-    public void print(CustomArray<Bus> buses) {
+    public static void print(CustomArray<Bus> buses) {
         System.out.println(OutputFormat.getOutputFormat(buses));
     }
 }
