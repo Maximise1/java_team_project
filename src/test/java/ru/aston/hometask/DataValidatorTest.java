@@ -9,25 +9,25 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class DataValidatorTest {
 
     @Test
-    void testValidData() {
+    void when_dataIsValid_then_returnTrue() {
         assertTrue(DataValidator.isValid("А777АА77", "Mercedes", "1000"));
         assertTrue(DataValidator.isValid("X123TO199", "Ford", "0"));
     }
 
     @Test
-    void testInvalidBusNumber() {
+    void when_busNumberIsInvalid_then_returnFalse() {
         assertFalse(DataValidator.isValid("Q155BV124", "Ford", "100"));
         assertFalse(DataValidator.isValid("TTTT1444", "Ford", "100"));
     }
 
     @Test
-    void testInvalidModel() {
+    void when_modelIsInvalidOrNull_then_returnFalse() {
         assertFalse(DataValidator.isValid("X123TO199", "1232176_Model", "-100"));
         assertFalse(DataValidator.isValid("X123TO199", null, "-100"));
     }
 
     @Test
-    void testInvalidMileage() {
+    void when_mileageIsInvalid_then_returnFalse() {
         assertFalse(DataValidator.isValid("X123TO199", "Ford", "-100"));
         assertFalse(DataValidator.isValid("X123TO199", "Ford", "not_number"));
     }

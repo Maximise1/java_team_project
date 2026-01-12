@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RandomReaderTest {
 
     @Test
-    void testRandomGeneration() {
+    void when_generateBuses_then_uniqueBusesReturned() {
         RandomReader reader = new RandomReader();
         int size = 50;
         CustomArray<Bus> buses = reader.read(size, null);

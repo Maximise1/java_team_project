@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class InputHandlerTest {
 
     @Test
-    void testExecuteCommandWithValidArgs() {
+    void when_executeCommand_then_repositoryIsPopulated() {
         BusRepository repository = new BusRepository();
         InputHandler handler = new InputHandler(repository);
 
@@ -18,7 +18,7 @@ public class InputHandlerTest {
     }
 
     @Test
-    void testExecuteCommandWithInvalidArgs() {
+    void when_executeCommandWithInvalidArgs_then_repositoryIsEmpty() {
         BusRepository repository = new BusRepository();
         InputHandler handler = new InputHandler(repository);
 

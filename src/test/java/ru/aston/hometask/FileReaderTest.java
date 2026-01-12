@@ -19,7 +19,7 @@ public class FileReaderTest {
     Path tempDir;
 
     @Test
-    void testReadFile() throws IOException {
+    void when_readBusFromFile_then_validBusesReturned() throws IOException {
         Path filePath = tempDir.resolve("test_buses.txt");
         List<String> lines = List.of("A777AA777 Mercedes 1000", "INVALID_DATA");
         Files.write(filePath, lines);

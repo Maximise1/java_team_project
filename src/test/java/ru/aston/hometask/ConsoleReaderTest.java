@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ConsoleReaderTest {
 
     @Test
-    void testReadFromConsole() {
+    void when_readBusFromConsole_then_busesReturned() {
         String input = "А777АА77 Mercedes 1000\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
 
