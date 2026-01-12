@@ -50,17 +50,17 @@ public class CommandParser {
             return null;
         }
 
-        /*if (DataValidator.isValid(splitCommand[1], splitCommand[2], splitCommand[3])) {
+        if (DataValidator.isValid(splitCommand[1], splitCommand[2], splitCommand[3])) {
             return new Command(
                     CommandType.COUNT,
                     new String[] {splitCommand[1], splitCommand[2], splitCommand[3]}
             );
-        } else {*/
+        } else {
             System.out.println(
                     "Команда count должна соответствовать формату print <number> <model> <mileage>");
             System.out.println("Пример: count А111AA11 ford 100");
             return null;
-        //}
+        }
     }
 
     private Command parsePrint(String originalCommand, String[] splitCommand) {

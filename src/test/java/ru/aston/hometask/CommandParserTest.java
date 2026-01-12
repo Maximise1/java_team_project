@@ -33,6 +33,8 @@ class CommandParserTest {
         Command printCommand1 = parser.parseCommand("print console");
         Command printCommand2 = parser.parseCommand("print file test.txt");
 
+        Command countCommand = parser.parseCommand("count А111AA11 ford 100");
+
         Command exitCommand = parser.parseCommand("exit");
 
         assertEquals(CommandType.SORT, sortCommand1.type);
@@ -52,12 +54,16 @@ class CommandParserTest {
         assertEquals("10", fillCommand2.params[1]);
         assertEquals("random", fillCommand3.params[0]);
         assertEquals("20", fillCommand3.params[1]);
+        assertEquals(CommandType.COUNT, countCommand.type);
 
         assertEquals(CommandType.PRINT, printCommand1.type);
         assertEquals(CommandType.PRINT, printCommand2.type);
         assertEquals("console", printCommand1.params[0]);
         assertEquals("file", printCommand2.params[0]);
         assertEquals("test.txt", printCommand2.params[1]);
+        assertEquals("А111AA11", countCommand.params[0]);
+        assertEquals("ford", countCommand.params[1]);
+        assertEquals("100", countCommand.params[2]);
 
         assertEquals(CommandType.EXIT, exitCommand.type);
     }

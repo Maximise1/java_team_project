@@ -19,7 +19,9 @@ public class HelpHandler implements CommandHandler {
         System.out.println("    number/model/mileage - Запустит сортировку по выбранному полю");
         System.out.println("    even - *Опциональный* Запустит сортировку только чётных значений выбранного поля\n");
         System.out.println("count - подсчитывает количество элементов с переданным значением");
-        System.out.println("    <Bus> - значение\n");
+        System.out.println("    <String> - номер автобуса");
+        System.out.println("    <String> - модель автобуса");
+        System.out.println("    <Int> - пробег автобуса\n");
         System.out.println("exit - выход из цикла программы\n");
     }
 }
