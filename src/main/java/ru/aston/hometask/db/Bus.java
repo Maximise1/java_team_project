@@ -1,5 +1,7 @@
 package ru.aston.hometask.db;
 
+import java.util.Objects;
+
 public class Bus extends RandomBus{ // TODO: Добавить реализацию с паттерном Builder
     private final String number;
     private final String model;
@@ -63,5 +65,20 @@ public class Bus extends RandomBus{ // TODO: Добавить реализаци
                 ", model='" + model + '\'' +
                 ", mileage=" + mileage +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bus bus = (Bus) o;
+        return mileage == bus.mileage &&
+                Objects.equals(number, bus.number) &&
+                Objects.equals(model, bus.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, model, mileage);
     }
 }
