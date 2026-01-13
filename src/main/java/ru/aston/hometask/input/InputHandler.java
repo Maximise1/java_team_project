@@ -29,9 +29,17 @@ public class InputHandler implements CommandHandler { // TODO: Вызывает 
         }
 
         try {
-            int size = Integer.parseInt(args[0]);
-            String mode = args[1].toLowerCase();
-            String path = (args.length > 2) ? args[2] : null;
+            int size = 0;
+            String mode = null;
+            String path = null;
+
+            if (args[0].matches("\\d+")) {
+                size = Integer.parseInt(args[0]);
+                mode = args[1].toLowerCase();
+            } else {
+                mode = args[0].toLowerCase();
+                path = args[1];
+            }
 
             Reader selectedReader = readers.get(mode);
             if (selectedReader != null) {

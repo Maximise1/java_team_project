@@ -25,7 +25,6 @@ public class FileReader implements Reader { // TODO: реализовать чт
             lines.map(line -> line.trim().split("\\s+"))
                     .filter(parts -> parts.length == 3)
                     .filter(parts -> DataValidator.isValid(parts[0], parts[1], parts[2]))
-                    .limit(size)
                     .map(parts -> new Bus.BusBuilder()
                             .number(parts[0])
                             .model(parts[1])
