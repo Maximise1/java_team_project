@@ -46,7 +46,7 @@ public class CustomArray<Bus> {
             System.arraycopy(data, index + 1, data, index, numMoved);
         }
 
-        data[--size] = null; // prevent memory leak
+        data[--size] = null;
         return removed;
     }
 
