@@ -21,14 +21,14 @@ public class FileReaderTest {
     @Test
     void when_readBusFromFile_then_validBusesReturned() throws IOException {
         Path filePath = tempDir.resolve("test_buses.txt");
-        List<String> lines = List.of("A777AA777 Mercedes 1000", "INVALID_DATA");
+        List<String> lines = List.of("А777АА777 Mercedes 1000", "INVALID_DATA");
         Files.write(filePath, lines);
 
         FileReader reader = new FileReader();
         CustomArray<Bus> buses = reader.read(100, filePath.toString());
 
         assertEquals(1, buses.size());
-        assertEquals("A777AA777", buses.get(0).getNumber());
+        assertEquals("А777АА777", buses.get(0).getNumber());
         assertEquals("Mercedes", buses.get(0).getModel());
         assertEquals(1000, buses.get(0).getMileage());
     }

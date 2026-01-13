@@ -11,7 +11,7 @@ public class DataValidatorTest {
     @Test
     void when_dataIsValid_then_returnTrue() {
         assertTrue(DataValidator.isValid("А777АА77", "Mercedes", "1000"));
-        assertTrue(DataValidator.isValid("X123TO199", "Ford", "0"));
+        assertTrue(DataValidator.isValid("Х123ТО199", "Ford", "0"));
     }
 
     @Test
