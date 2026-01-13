@@ -46,7 +46,7 @@ public class InputHandler implements CommandHandler { // TODO: Вызывает 
                 CustomArray<Bus> buses = selectedReader.read(size, path);
                 repository.addBuses(buses);
 
-                System.out.println("Успешно добавлено " + size + " элементов.");
+                System.out.println("Успешно добавлено " + buses.size() + " элементов.");
             } else {
                 System.out.println("Ошибка: Неизвестный режим ввода '" + mode + "' Доступны: file, console, random");
             }
