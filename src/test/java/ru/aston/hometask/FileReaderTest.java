@@ -21,7 +21,7 @@ public class FileReaderTest {
     @Test
     void when_readBusFromFile_then_validBusesReturned() throws IOException {
         Path filePath = tempDir.resolve("test_buses.txt");
-        List<String> lines = List.of("|А777АА777 |Mercedes |1000|", "INVALID_DATA");
+        List<String> lines = List.of("А777АА777 Mercedes 1000", "INVALID_DATA");
         Files.write(filePath, lines);
 
         FileReader reader = new FileReader();

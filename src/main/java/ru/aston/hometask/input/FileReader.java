@@ -22,13 +22,13 @@ public class FileReader implements Reader { // TODO: реализовать чт
 
         try (Stream<String> lines = Files.lines(Paths.get(params))) {
 
-            lines.map(line -> line.trim().split("\\|"))
-                    .filter(parts -> parts.length == 4)
-                    .filter(parts -> DataValidator.isValid(parts[1].trim(), parts[2].trim(), parts[3].trim()))
+            lines.map(line -> line.trim().split("\\s+"))
+                    .filter(parts -> parts.length == 3)
+                    .filter(parts -> DataValidator.isValid(parts[0], parts[1], parts[2]))
                     .map(parts -> new Bus.BusBuilder()
-                            .number(parts[1].trim())
-                            .model(parts[2].trim())
-                            .mileage(Integer.parseInt(parts[3].trim()))
+                            .number(parts[0])
+                            .model(parts[1])
+                            .mileage(Integer.parseInt(parts[2]))
                             .build())
                     .forEach(buses::add);
 
